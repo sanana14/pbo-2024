@@ -19,111 +19,26 @@ def batas():
 # pastikan untuk menguji class dan fungsi yang sudah di buat disini
 
 #modul_satu_pbo.py
+class prodak:
+    def __init__(self, nama, harga, diskon=0, pajak=0):
+        self.nama = nama
+        self.harga = harga
+        self.diskon = diskon
+        self.pajak = pajak
 
-class Mahasiswa:
-    def __init__(self, name, npm, jurusan):
-        self.name = name
-        self.npm = npm
-        self.jurusan = jurusan
-        self.nilai = []
+    def harga_setelah_diskon(self):
+        """Menghitung harga setelah diskon"""
+        harga_diskon = self.harga * (self.diskon / 100)
+        return self.harga - harga_diskon
 
-    def tambah_nilai(self, mata_kuliah, nilai):
-        self.nilai.append({"mata_kuliah": mata_kuliah, "nilai": nilai})
+    def harga_setelah_pajak(self):
+        """Menghitung harga setelah pajak"""
+        harga_diskon = self.harga_setelah_diskon()
+        harga_pajak = harga_diskon * (self.pajak / 100)
+        return harga_diskon + harga_pajak
 
-    def rata_rata_nilai(self):
-        if not self.nilai:
-            return 0
-        total_nilai = sum([item["nilai"] for item in self.nilai])
-        return total_nilai / len(self.nilai)
+    def total_harga(self):
+        """Menghitung total harga setelah diskon dan pajak"""
+        return self.harga_setelah_pajak()
 
-    def tampilkan_info(self):
-        print(f"Nema: {self.name}")
-        print(f"NPM: {self.npm}")
-        print(f"Jurusan: {self.jurusan}")
-        print("Nilai:")
-        for item in self.nilai:
-            print(f"  {item['mata_kuliah']}: {item['nilai']}")
-        print(f"Rata-rata Nilai: {self.rata_rata_nilai():.2f}")
-
-
-#Ini Kontribusi Dari Muh. Fadel Nur
-class fadel:
-    def __init__ (self, nama, npm, kelas, alamat, asal):
-        self.n=nama
-        self.npm=npm
-        self.k=kelas
-        self.a=alamat
-        self.asal=asal
-
-    def output(self):
-        print(f"Nama Saya \t\t: {self.n} \nNpm Saya \t\t: {self.npm} \nKelas \t\t\t: {self.k} \nAlamat Saya Di \t\t: {self.a} \nAsal Saya Dari \t\t: {self.asal}")
-
-def fadel_0():
-    return fadel_1(int(input("Masukan Nilai Anda : ")))
-
-def fadel_1(nilai):
-    if nilai >= 80:
-        print("Nilai Yang Anda Peroleh Adalah : A")
-
-    elif nilai >=70:
-        print("Nilai Yang Anda Peroleh Adalah : B")
-
-    elif nilai >=60:
-        print("Nilai Yang Anda Peroleh Adalah : C")
-
-    elif nilai >=50:
-        print("Nilai Yang Anda Peroleh Adalah : D")
-
-    else:
-        print("Nilai Yang Anda Peroleh Adalah : E")
-
-    return fadel_3(str(input("Apakah Anda Ingin Mengulangi Program ( Y / T ) : ")))
-    
-def fadel_3(masukan):
-    if masukan == "Y":
-        return fadel_0()
-    
-    if masukan == "y":
-        return fadel_0()
-    
-    if masukan == "T":
-        print("Ini Adalah Akhir Program Terima Kasih Sudah Mencoba Program FADEL :) ")
-
-    if masukan == "t":
-        print("Ini Adalah Akhir Program Terima Kasih Sudah Mencoba Program FADEL :) ")
-
-    else:
-        print("Ini Adalah Akhir Program Terima Kasih Sudah Mencoba Program FADEL :) ")
-
-# ini Kontribusi dari Refalina
-# modul_satu_pbo.py
-
-class Course:
-    def __init__(self, kode, nama_mata_kuliah):
-        self.kode = kode
-        self.nama_mata_kuliah = nama_mata_kuliah
-        self.mahasiswa_terdaftar = []
-
-    def tambah_mahasiswa(self, mahasiswa):
-        self.mahasiswa_terdaftar.append(mahasiswa)
-
-    def tampilkan_mahasiswa(self):
-        print(f"Mata Kuliah: {self.nama_mata_kuliah} ({self.kode})")
-        print("Mahasiswa yang Terdaftar:")
-        for mahasiswa in self.mahasiswa_terdaftar:
-            print(f"- {mahasiswa.name} ({mahasiswa.npm})")
-            
-# Pengujian Kelas Course
-if __name__ == "__main__":
-    # Membuat objek Mahasiswa
-    mahasiswa1 = Mahasiswa("Budi", "123456", "Informatika")
-    mahasiswa2 = Mahasiswa("Siti", "654321", "Matematika")
-    
-    # Membuat objek Course dan menambahkan mahasiswa
-    kursus = Course("IF101", "Pemrograman Berorientasi Objek")
-    kursus.tambah_mahasiswa(mahasiswa1)
-    kursus.tambah_mahasiswa(mahasiswa2)
-    
-    # Menampilkan informasi kursus
-    kursus.tampilkan_mahasiswa()
 
